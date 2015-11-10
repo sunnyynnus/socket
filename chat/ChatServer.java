@@ -19,9 +19,10 @@ public class ChatServer {
 	private static final Set<String> nameSet= new HashSet<>();
 	private static final Set<PrintWriter> pwSet= new HashSet<>(); 
 	private static final ExecutorService threadPool = Executors.newCachedThreadPool();
+	private static final int port = 9123;
 	
 	public static void main(String[] args) throws IOException {
-		try(ServerSocket listener= new ServerSocket(9123)){
+		try(ServerSocket listener= new ServerSocket(port)){
 			while(true){
 				threadPool.submit(new ChatServerHandler(listener.accept()));
 			}
